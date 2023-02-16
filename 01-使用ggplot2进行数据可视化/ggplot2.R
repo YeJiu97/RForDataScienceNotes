@@ -3,10 +3,10 @@ install.packages("tidyverse")
 # 安装ggplot2
 install.packages("ggplot2")
 
-
 # 加载两个packages
 library(tidyverse)
 library(ggplot2)
+
 
 
 # ---------- 第一步
@@ -18,7 +18,7 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 
 
 
-# ---------- 练习
+# ---------- 一些练习 - 1
 # 没有geom_function会是什么？
 ggplot(data = mpg)
 
@@ -42,3 +42,41 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))  # 使用 size 来表示 class
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))  # 使用 alpha 来表示 class
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class))  # 使用 shape 来表示 class
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue")  # color 在aes函数之外，所以调整的是整个图形的颜色
+
+
+
+# ---------- 一些练习 - 2
+ggplot(data = mpg) +
+  geom_point(
+    mapping = aes(x = displ, y = hwy, color = "blue")
+  )
+
+ggplot(data = mpg) +
+  geom_point(
+    mapping = aes(x = displ, y = hwy), color = "blue"
+  )
+
+?mpg
+
+ggplot(data = mpg) +
+  geom_point(
+    mapping = aes(x = displ, y = hwy, shape = class, color = class)  # 这里将class同时给了shape和color两个图形属性
+  )
+
+?geom_point
+
+
+ggplot(data = mpg) +
+  geom_point(
+    mapping = aes(x = displ, y = hwy, stroke = 2)
+  )
+
+
+ggplot(data = mpg) +
+  geom_point(
+    mapping = aes(x = displ, y = hwy, color = displ < 5)
+  )
+
+
+# ---------- 分面
